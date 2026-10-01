@@ -1,0 +1,115 @@
+
+%-------------------------------------------------------------------------------
+\chapter{Calibration and Object/Event Definitions}
+\label{sec:objects}
+%-------------------------------------------------------------------------------
+
+
+\todo{The calibration part is a summary from the W pT paper. This needs to be updated for the calibration of the mW}
+
+\section{Electrons calibration and corrections}
+\label{sec:elCorr}
+
+Reference~\cite{lowMuMw:INT1} details the electron performance studies done using the special low-pileup datasets collected by the ATLAS detector at $\sqrt{s} = 5$ and 13~\TeV.
+The electron reconstruction scale factors are obtained by extrapolation of the standard high-pileup SFs to the \lowmu regime, and apply to both the 13 and 5 \TeV{} datasets. The identification scale factors are measured in-situ separately for the 13 and 5 \TeV{} data.
+Isolation and trigger efficiencies and SF are measured in-situ separately for the 13 and 5 \TeV{} data sets.
+For the electron energy calibration, the global strategy follows the methodology applied in high-$\mu$ standard calibration and described in Ref.~\cite{EGAM-2018-01}.
+Electron energy scale and resolution corrections are measured in-situ using \Zee events from the low pile-up dataset. 
+
+\section{Muons calibration and correction}\label{sec:muCorr}
+
+Reference ~\cite{lowMuMw:INT1} details the muon-related performance measurements obtained using the ATLAS low pile-up $\sqrt{s} = 5$
+TeV and $13$ TeV data relevant for this measurement.
+Muon reconstruction and \textit{track-to-vertex association} requirements efficiencies measured
+insitu with \Zmm\ events are found to be compatible with the
+corresponding high-$\mu$ measurements and are measured to
+permille-level precision. The muon trigger and isolation efficiencies
+are measured insitu in the \lowmu\ data, for each dataset, to typically better than $<1\%$ precision, limited
+by the size of the \Zmm\ data samples. Finally, the muon calibration
+derived from the high-$\mu$ data has been cross-checked using both
+\Zmm\ and \Jmumu\ events in the \lowmu\ datasets and has been found to be adequate at the
+current level of systematics. A dedicated correction for
+charge-dependent momentum biases, so-called sagitta correction, has
+been derived using a combination of different methods using the $13$ TeV \lowmu dataset.
+
+
+\section{Hadronic Recoil calibration and correction}\label{sec:recoilCorr}
+
+The detailed procedure to calibrate the hadronic recoil is described in Ref.~\cite{lowMuMw:INT1}. It is briefly summarised here. The calibration is obtained as a function of \setue\ and \ptv\ of the boson, since the hadronic recoil is mainly sensitive to these. The correction is obtained in \Zboson\ events and extrapolated to the \Wboson\ events.
+
+The procedure consists of three steps :
+\begin{itemize}
+	\item First, the \setue\ distribution in the Monte-Carlo should be well modelled and match that of the data. More precisely, it is crucial to model correctly the correlation between \setue\ and \ptv, since we want to have a good description of the activity as a function of our measured physics observable. This is achieved thanks to a 2-dimensional reweighting, obtained in \Zboson\ events. In the simulated \Wboson\ events, an additional reweighting of \setue\ in bins of \ut\ is applied. A further 1-dimensional reweighting is obtained for each process (\Wminus, \Wplus\ and \Zboson) to recover the initial underlying \pttruth\ spectrum.
+
+	\item Second, the direction of the recoil is corrected, taking the projections on $x$ and $y$ axes of the recoil in \Zboson\ events, and correcting for any data to MC differences.
+
+	\item Finally, response and resolution corrections are, once again, obtained in-situ in \Zboson\ events, where the
+    parallel (\upar) and perpendicular (\uperp) components can be extracted in the data as a function of \setue\ and \ptll, and compared
+    to the Monte-Carlo to extract corrective coefficients. 
+\end{itemize}
+
+This \Zboson\ boson based calibration is applied to \Wboson\ events ; uncertainties due to this extrapolation are included. A summary on these uncertainties, as well as their impact on the unfolded spectra, are discussed in section~\ref{subsec:uncsummary}.
+
+\section{Object and Event Definitions}
+\label{subsec:definitions}
+
+\todo{This section needs to be checked for any errors}
+
+
+In this analysis, electrons or muons are considered as
+leptons. Electrons are reconstructed from energy clusters in the
+calorimeter associated to a track, while muons are reconstructed from a
+track that crosses both the inner detector and the muon chambers. Both electrons and muons are required to
+have $\pT>25~\GeV$. Additionally, electrons should have $|\eta|<2.47$
+and candidates in the crack region $1.37<|\eta|<1.52$ are
+excluded. Muons candidates are required to be within $|\eta|<2.4$. The
+electron candidates must satisfy the Medium LH identification criteria
+and are required to be isolated, satisfying the track isolation
+criterion $\texttt{ptcone20}/\min(\pt, 50\,\GeV) <0.1$.  The muon
+candidates must satisfy the Medium identification criteria and are
+also required to be isolated, satisfying the
+$\texttt{ptcone20}/\min(\pt, 50\,\GeV) <0.1$ track isolation criterion.
+
+Leptons are required to originate from the primary vertex. The
+longitudinal impact parameter of each lepton track, defined as the
+distance between the track and the primary vertex along the beam line
+multiplied by the sine of the track $\theta$ angle, is required to be
+less than $0.5$ mm ( $\Delta z_{0}\times \sin(\theta)
+<0.5$ mm). Furthermore, the significance of the transverse impact
+parameter, defined by the transverse impact parameter ($d_{0}$ ) of a
+lepton track with respect to the beam line, divided by its estimated
+uncertainty ($\sigma(d_{0})$ ), is required to satisfy for electrons
+$|d_0|/\sigma(d_{0}) < 5$ and for muons $|d_0|/\sigma(d_{0}) < 3$.
+
+Dedicated lepton calibrations and efficiency corrections are applied to the data and the MC used in the analysis following the Reference~\cite{lowMuMw:INT1} for electrons and muons. A short summary of the calibration strategy and the corresponding resulting uncertainties for the electrons and muons is described in Sections~\ref{sec:elCorr} and ~\ref{sec:muCorr}.
+
+In the context of W boson production a high precision computation of the neutrino kinematics is mandatory, and this is done with the help of the \textit{hadronic recoil}. In proton-proton collisions there is a non-zero transverse momentum for vector boson production that can be thought of to originate from initial state gluon and quark radiation:
+\begin{equation}
+\vec{p}_{T}(W/Z)=\vec{p}_{T}^{\mathrm{lepton1}}+\vec{p}_{T}^{\mathrm{lepton2}}=-\sum \vec{p}_{T}^{\mathrm{ISR quark,gluons}} = -\vec{\ut} \,.
+\end{equation}
+Here $p_{T}(W/Z)$ denotes the transverse momentum of the $W$ or $Z$ boson and $p_{T}^{\mathrm{lepton}}$ denote the transverse momenta decay leptons (charged lepton or neutrino). The  \textit{hadronic recoil}, $\sum \vec{p}_{T}^{\mathrm{ISR quark,gluons}}$,  is the quantity which accounts for the transverse momenta any partons recoiling from the colour-neutral boson, and is denoted as $\vec{\ut}$.
+The  \textit{hadronic recoil} has been used successfully for the W mass measurement at 7 \TeV and in the \ptw analysis, where it was proven to be a powerful tool to determine the neutrino transverse momentum in a more precise way than the ``standard'' TST (track soft term) based algorithm~\cite{STDM-2014-18}. This analysis, as with the \ptw analysis, uses \emph{particle flow objects} (PFOs) as input constituents to the building of \ut, and therefore exploits the full available topo-clusters and track information. 
+
+Other observables related to the neutrino which are used within this analysis, especially for the calibration, are:
+
+\textbf{MET} is the proxy for neutrino $\nu$ transverse momentum defined as 
+\begin{equation}\label{eq:METandNeutrino}
+\vec{\met} :=\vec{\pt}^{\nu}=-(\vec{\ut}+\vec{\pt}^\ell)
+\end{equation}
+where $\vec{\met}$ is the missing transverse energy. The transverse momenta of additional muons with $\pT>5~\GeV$ and satisfying the medium identification is added at the definition of \MET{} while their calorimeter energy deposit is subtracted from the event.
+
+\textbf{\set} which is a quantity that represents the total event activity. \set\ is computed as the scalar sum of the \pt of all
+PFOs and receives contributions from pileup, noise, and
+underlying event. The resolution of the \ut\ measurement will typically grow
+$\propto \set$. It is also strongly dependent on the vector
+boson dynamics and will grow with $\ptv=\ut$. 
+
+\textbf{\setue} is defined as $\setue = \set - \ut$ and is used to disentangle the effects from pileup, noise and UE from the vector boson dynamics. \setue\ may be thought of the event activity corrected for the ``directed'' recoil activity and represents more
+directly the activity from underlying event, pileup, and hard
+emissions beyond the first~\footnote{E.g. a $V+1$ jet event has
+  $\setue \sim 0$ on parton level for any jet \pt and thus a finite
+  $\setue > 0$ is due to additional activity.}.
+
+
+
+

@@ -1,0 +1,408 @@
+
+%-------------------------------------------------------------------------------
+\chapter{Data and Monte Carlo Samples}
+\label{sec:samples}
+%-------------------------------------------------------------------------------
+
+This analysis is done using dedicated data samples collected by the ATLAS experiment in low pile-up conditions. Many of the data and MC samples are similar to those used for the W \pT measurement~\cite{STDM-2018-17} and the previous setup was further described in this support note~\cite{Kretzschmar:2657141}. As there were several smaller updates, this section summarises all key information and gives the latest status. 
+
+\section{Data Sample}
+
+In November 2017 ATLAS collected low pile-up data at
+$\sqrt{s} = 5.02$~\TeV and $\sqrt{s} = 13$~\TeV, corresponding to data
+periods M and N respectively.\footnote{The data taken at
+  $\sqrt{s} = 5.02$~\TeV\ are often referred to as ``5~\TeV\ data''.}
+In July 2018, ATLAS recorded another low pile-up dataset at
+$\sqrt{s} = 13$~\TeV. The $13$~\TeV\ samples were levelled at an average
+number of interaction per crossing, $\langle\mu\rangle \approx 2$,
+while the $5$~\TeV\ data featured a similar average value with
+levelling as well. See Ref~\cite{Kretzschmar:2657141} for the $\mu$
+and the number of reconstructed primary vertices $N_\mathrm{PV}$
+distributions. All data is taken at 25ns bunch spacing, but there is a
+small difference in the filling scheme where the 2017 data was taken
+in the $8b4e$ bunch structure and the 2018 data with longer
+uninterrupted bunch trains.
+
+\begin{itemize}
+\item $\sqrt{s} = 5.02\tev$ data taken in November 2017, ATLAS data
+  period M, final calibrated luminosity $254.938\,\ipb$ with an uncertainty
+  of $\pm 1.0\%$ (tag
+  OflLumi-5TeV-004), \\GRL
+  \href{http://atlasdqm.web.cern.ch/atlasdqm/grlgen/All_Good/data17_5TeV.periodAllYear_DetStatus-v98-pro21-16_Unknown_PHYS_StandardGRL_All_Good_25ns_ignore_GLOBAL_LOWMU.xml}{\scriptsize data17\_5TeV.periodAllYear\_DetStatus-v98-pro21-16\_Unknown\_PHYS\_StandardGRL\_All\_Good\_25ns\_ignore\_GLOBAL\_LOWMU.xml}:\\
+  Runs 340644, 340683, 340697, 340718, 340814, 340849, 340850, 340910, 340925, 340973, 341027, 341123, 341184
+\item $\sqrt{s} = 13\tev$ data taken in November 2017, ATLAS data
+  period N, final calibrated luminosity $147.061\ipb$ with an uncertainty
+  of $\pm 1.15\%$ (tag
+  OflLumi-13TeV-011), \\GRL
+  \href{http://atlasdqm.web.cern.ch/atlasdqm/grlgen/All_Good/data17_13TeV.periodN_DetStatus-v98-pro21-16_Unknown_PHYS_StandardGRL_All_Good_25ns_ignore_GLOBAL_LOWMU.xml}{\scriptsize data17\_13TeV.periodN\_DetStatus-v98-pro21-16\_Unknown\_PHYS\_StandardGRL\_All\_Good\_25ns\_ignore\_GLOBAL\_LOWMU.xml}:\\
+  Runs 341294, 341312, 341419, 341534, 341615, 341649
+\item $\sqrt{s} = 13\tev$ data taken in June 2018, ATLAS data
+  period G4+J, final calibrated luminosity $ 191.085\ipb$ with an uncertainty
+  of $\pm 1.08\%$ (tag
+  OflLumi-13TeV-011), \\GRL
+  \href{http://atlasdqm.web.cern.ch/atlasdqm/grlgen/All_Good/data18_13TeV.periodG4J_MERGED_PHYS_StandardGRL_All_Good_25ns_ignore_GLOBAL_LOWMU.xml}{\scriptsize data18\_13TeV.periodG4J\_MERGED\_PHYS\_StandardGRL\_All\_Good\_25ns\_ignore\_GLOBAL\_LOWMU.xml}:\\
+  Runs 354396, 355331, 355389, 355416, 355468
+\end{itemize}
+
+The total luminosity for the 13 TeV data amounts to $338.146\ipb$ with
+an uncertainty of $\pm 0.92\%$. The luminosity calibration of the 13
+\TeV low-pileup datasets is discussed in Ref.~\cite{DAPR-2021-01} and
+the calibration of the $5.02$ \TeV data sample was carried out in a
+similar way.
+
+There are two places in the reconstruction of signals in the ATLAS
+calorimeters that are sensitive to the level of pile-up. During data
+taking, the so-called LAr ``optimal filtering coefficients'',
+\texttt{OFC}, and the settings of the readout gain for the EMEC-IW and
+FCAL calorimeters front-end electronics~\cite{LARG-2009-01} affect the
+``online noise-suppression''.  For the nominal Run 2 data and MC16
+simulations, the LAr \texttt{OFC} were optimised for
+$\langle\mu\rangle = 20$, the EMEC-IW and FCAL front-end electronics
+are allowed to use only Medium-Gain and Low-Gain readouts, and \sigPU\
+was taken to correspond to an average of $40$ additional $pp$
+interactions per bunch crossing. For the \lowmu\ data used in this
+measurement, the setting were kept identical, as studies showed the
+impact was marginal and it would likely be beneficial to keep the
+setting used throughout Run 2. However, in the offline reconstruction
+of calorimeter clusters, the value of \sigPU\ is chosen to correspond
+to $\langle\mu\rangle = 0$, \textit{i.e.} $\sigPU = 0$ to retain the
+calorimeter sensitivity to the small signals relevant to the hadronic
+recoil reconstruction.
+
+
+The data of the 2017 runs, both 5 and 13 \TeV, was reprocessed using
+updated settings for the ID alignment (\texttt{r10803}) to improve the
+muon sagitta biases, while the 2018 data relies on the
+T0-reconstructed data sets. Data is further processed to STDM4 or
+STDM6 derivations:
+\begin{itemize}
+\item original (T0) 2017 data was processed to STDM4 with \texttt{p3372}
+\item reprocessed 2017 data was processed to STDM6 with \texttt{p3653}
+\item 2018 data was processed to STDM6 with \texttt{p3583}
+\end{itemize}
+
+\section{MC Samples and cross sections}
+\label{sec:mcsamples}
+
+A dedicated MC16 campaign was produced to match the special condition
+of the \lowmu data.  All signal and background samples where
+reprocessed using the following tags: \texttt{r10243} for 5~\TeV,
+\texttt{r10244} for 13~\TeV\ 2017 data, and \texttt{r11165} for
+13~\TeV\ 2018 data. 
+
+All MC samples uses settings specific to the special data run conditions, 
+i.e. specifically the pileup overlay, topo-cluster noise thresholds and trigger 
+menu are adapted. Given that the pileup distribution is already adjusted closely to the dataset, 
+no further $\mu$-reweighting is performed.
+
+For $\sqrt{s} = 13\tev$, generally the event samples generated and
+simulated (``HITS'', tag \texttt{s3126}) for the main ATLAS MC16d/e campaign are reused and
+processed further with dedicated settings in digitisation and
+reconstruction. For $\sqrt{s} = 5\tev$, event samples are processed specifically for
+this data set, using the simulation and reconstruction tags
+\texttt{s3238\_r10243}.
+
+Tables~\ref{tab:samples13} and ~\ref{tab:samples5} summarize the
+main simulated samples and their properties. The cross-sections quoted in
+the table are used to normalize predicted event counts for the various
+samples and the respective uncertainties are listed as well.
+
+The main signal event samples for $W$ and $Z$ production are generated
+at NLO QCD and LO EW using the \Powheg\ event
+generator~\cite{Nason:2004rx,Frixione:2007vw,Alioli:2010xd,Barze:2012tt,Barze:2013fru}
+using the CT10 PDF, interfaced to \Pythia~\cite{pythia} using the
+AZNLO tune~\cite{STDM-2012-23}. \Powheg+\Pythia samples are interfaced
+to \Photos~\cite{Golonka:2005pn} to simulate the effect of final state
+QED radiation using NLO kernels and including the effect of low-mass
+$\gamma^* \to \ell\ell$ splitting. In contrast to earlier such samples
+produced with the older \Powheg~V1 code~\cite{Alioli:2008gx}, these
+newer samples improve make use of the \Powheg~V2 modules that allow
+PDF variations to be incorporated on the fly. Also, the \Photos{}
+accuracy is formally improved.
+
+Alternative signal event samples for $W$ and $Z$ production are
+generated at NNLO QCD and LO EW using the MiNNLOPS
+procedure~\cite{Monni:2020nks,Monni:2019whf} using the CT18NNLO
+PDF~\cite{Hou:2019efy}, interfaced to \Pythia~\cite{pythia} using a
+variation of the A14 tune~\cite{ATL-PHYS-PUB-2014-021}~\footnote{The
+  parameters changed with respect to the ``vanilla'' A14 settings are
+  Pythia's primordial $k_t$ parameter and the parameters affecting the
+  parton shower matching. These parameters were chosen to optimise the improvement
+  with existing unfolded $Z$ \pt and $Z+$jets data.}.
+\Photos{} is used in the same mode as for the above  \Powheg+\Pythia samples.
+
+Alternative samples at $\sqrt{s} = 13\tev$ are prepared with \Sherpa\
+2.2.2/5~\cite{Hoche:2010kg} using the NNPDF3.0 PDFs and merging
+$V+0,1,2$ at NLO accuracy with $V+3,4$ at LO accuracy using the
+MEPS@NLO scheme. Futher technical details and overview talbles on
+these samples are given in Ref.~\cite{Kretzschmar:2657141}.
+
+Backgrounds from top-quark pair-production $t\bar{t}$ as well as
+single-top production ($Wt$, t-channel, s-channel) are generated with
+\Powheg+\Pythia. Backgrounds from di-bosons
+$WW, WZ, ZZ$ are generated with \Powheg+\Pythia~\cite{Nason:2013ydw}
+in all decay channels with at least one charged lepton in the final
+state using the NNPDF3.0 NLO PDF set and the A14 Pythia tune. Special
+care is taken to avoid overlaps in final states with the $W$ and $Z$
+signal samples where an additional charged lepton pair is generated by
+$\gamma^* \to \ell\ell$ splitting.
+
+For muon calibration purposes, some dedicated $J/\psi \to \mu\mu$
+samples are produced with \Pythia, interfacted to \Photos{} to
+simulate QED FSR, both for the ``direct'' production process as well
+as for ``indirect'' production in decays of B hadrons.
+
+Cross sections for all processes listed in the tables below are
+straight from the generator, except for the $t\bar{t}$ process, where
+improved NNLO predictions are used directly. Specifically for the $W$
+and $Z$ processes, corrections are applied later on as part of the
+physics modelling procedures. Uncertainties on the cross-sections
+arise from the choice of PDF set and PDF set internal uncertainties,
+from factorization and renormalisation scale dependence, and the
+strong coupling constant $\alpha_s$. Total uncertainties of $5\%$ ($W$
+and $Z$), 7\% ($t\bar{t}$) and 10\% (single top, dibosons) are taken
+on predictions normalized using these cross-sections,
+e.g. for use of estimation of backgrounds.
+
+The effect of multiple interactions per bunch crossing (``pileup'') is
+modelled by overlaying simulated minimum bias events over the original
+hard-scattering event. The minimum bias events were generated with
+\Pythia\ using the NNPDF2.3LO set of PDFs~\cite{Ball:2012cx} and the A3
+tune~\cite{ATL-PHYS-PUB-2016-017}.
+
+
+\begin{table}[htbp]
+  \small
+  \begin{center}
+    \begin{tabular}{l|l|l|l|l}
+      \hline
+      Process & Data set & $\sigma{\cdot}
+      \text{BR}{\cdot}\epsilon_\mathrm{filter}$ [nb] (th. unc.)
+      & $N^\mathrm{skim}_\mathrm{evt}\,[10^6]$
+      & $N^\mathrm{unskim}_\mathrm{evt}\,[10^6]$\\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia NLO $W,Z$ samples}}\\
+      \hline
+$ W^{+} \to e^{+}\nu $ & 603391 & 11.39 (5\%)  & 45+58 & 45+58 \\
+$ W^{+} \to \mu^{+}\nu $ & 603392 & 11.39 (5\%)  & 45+58 & 40+58 \\
+$ W^{+} \to \tau^{+}\nu $ & 603393 & 11.39 (5\%)  & 20+26 & 20+26 \\
+$ W^{-} \to e^{-}\bar{\nu} $ & 603394 & 8.341 (5\%)  & 35+44 & 35+44 \\
+$ W^{-} \to \mu^{-}\bar{\nu} $ & 603395 & 8.341 (5\%)  & 35+45 & 35+45 \\
+$ W^{-} \to \tau^{-}\bar{\nu} $ & 603396 & 8.341 (5\%)  & 15+13 & 15+13 \\\hline
+$ Z \to ee $ $m>60\GeV$ & 603397 & 1.903 (5\%)  & 15+19 & 15+19 \\
+$ Z \to \mu\mu $ $m>60\GeV$ & 603398 & 1.903 (5\%)  & 15+19  & 15+19 \\
+$ Z \to \tau\tau $ $m>60\GeV$ & 603399 & 1.903 (5\%)  & 3.5+4.4 & 3.5+4.4 \\
+$ Z \to ee $ $20<m<60\GeV$ & 603400 & 1.206 (5\%)  & 2.0+2.6 & 2.0+2.6 \\
+$ Z \to \mu\mu $ $20<m<60\GeV$ & 603401 & 1.206 (5\%)  & 2.0+2.6 & 2.0+2.6 \\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia MiNNLOPS $W,Z$ samples -- Minitrees stil TODO}}\\
+      \hline
+$ W^{+} \to e^{+}\nu $ & 604351 & 11.64 (5\%) &  & 18.5+[TODO] \\
+$ W^{+} \to \mu^{+}\nu $ & 604352 & 11.64  (5\%) &  & 18.4+23.4 \\
+$ W^{+} \to \tau^{+}\nu $ & 604353 & 11.64  (5\%) &  & 8.4+10.6 \\
+$ W^{-} \to e^{-}\bar{\nu} $ & 604348 & 8.603 (5\%) & & 14.5+18.5 \\
+$ W^{-} \to \mu^{-}\bar{\nu} $ & 604349 & 8.603  (5\%) &  & 14.5+18.5 \\
+$ W^{-} \to \tau^{-}\bar{\nu} $ & 604350 & 8.603  (5\%) &  & 6.3+7.9 \\\hline
+$ Z \to ee $ $m>60\GeV$ & 604354 & 1.912 (5\%) &  & 6.1+7.8 \\
+$ Z \to \mu\mu $ $m>60\GeV$ & 604355 & 1.912 (5\%) &  & 6.2+7.8 \\
+$ Z \to \tau\tau $ $m>60\GeV$ & 604356 & 1.912 (5\%) &  & 1.4+1.8 \\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia Diboson samples}}\\
+      \hline
+$ WW (lvlv) $ & 604493 & 0.01055 (10\%)  & 0.037+0.037 & 0.05+0.05 \\
+$ WW (lvqq) $ & 604494 & 0.04383 (10\%)  & 0.100+0.100 & 0.2+0.2 \\
+$ WZ (lvll) $ & 604495 & 0.00144 (10\%)  & 0.008+0.008 & 0.01+0.01 \\
+$ WZ (lvqq) $ & 604496 & 0.01021 (10\%)  & 0.026+0.026 & 0.05+0.05 \\
+$ WZ (lvvv) $ & 604497 & 0.00280 (10\%)  & 0.010+0.010 & 0.02+0.02 \\
+$ WZ (qqll) $ & 604498 & 0.00702 (10\%)  & 0.011+0.011 & 0.03+0.03 \\
+$ ZZ (llll) $ & 604499 & 0.00061 (10\%)  & 0.004+0.004 & 0.01+0.01 \\
+$ ZZ (qqll) $ & 604500 & 0.00609 (10\%)  & 0.011+0.011 & 0.03+0.03 \\
+$ ZZ (vvll) $ & 604501 & 0.00093 (10\%)  & 0.005+0.005 & 0.01+0.01 \\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia top samples}}\\
+      \hline
+$ t\bar{t} $ & 410470 & 0.8318 $\times$ 0.544 (7\%)  & 1.35+1.28 & 2.0+1.9 \\
+$ t $ (s-chan.) & 410644 & 0.002027 (10\%)  & 0.011+0.0055 & 0.02+0.01 \\
+$ \bar{t} $ (s-chan.) & 410645 & 0.001268 (10\%)  & 0.0056+0.0056 & 0.01+0.01 \\
+$ t $ (t-chan.) & 410658 & 0.03699 (10\%)  & 0.113+0.113 & 0.2+0.2 \\
+$ \bar{t} $ (t-chan.) & 410659 & 0.02217 (10\%)  & 0.088+0.088 & 0.15+0.15 \\
+$ W\bar{t} $ & 601352 & 0.03597 (10\%)  & 0.088+0.083 & 0.2+0.2 \\
+$ Wt $ & 601355 & 0.03600 (10\%)  & 0.082+0.083 & 0.2+0.2\\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Pythia $J/\psi \to \mu\mu$ samples}}\\
+      \hline
+Prompt & 801912 & -- & 10+13 & 10+13 \\
+Non-prompt & 801917 & -- & 10+13 & 10+13 \\
+\hline
+   \end{tabular}
+   \caption{Monte Carlo samples at $\sqrt{s} = 13\tev$ for 2017+2018
+     setups combined. Samples are loosely sorted by category, each
+     sample within one category is produced with the headlined
+     generator setup. For each sample are given: a short description
+     of the process, the ATLAS MC data set number (DSID), the used
+     value of the generator cross section times any branching and
+     filter efficiencies
+     ($\sigma{\cdot} \text{BR}{\cdot}\epsilon_\mathrm{filter}$) with
+     the theoretical uncertainty in percent (``th. unc.''), and
+     finally the number of events analysed after skimming at
+     derivation production ($N^\mathrm{skim}_\mathrm{evt}$) as well as
+     the number of events originally processed and simulated
+     ($N^\mathrm{unskim}_\mathrm{evt}$). Event numbers are given as sum, where the first number relates to the 2017 conditions and the second number to the 2018 conditions. The MC equivalent luminosity
+     $N^\mathrm{unskim}_\mathrm{evt}/(\sigma{\cdot}\text{BR}{\cdot}\epsilon_\mathrm{filter})$
+     is generally in excess of $10-20$ times the data luminosity.}
+    \label{tab:samples13}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \small
+  \begin{center}
+    \begin{tabular}{l|l|l|l|l}
+      \hline
+      Process & Data set & $\sigma{\cdot}
+      \text{BR}{\cdot}\epsilon_\mathrm{filter}$ [nb] (th. unc.)
+      & $N^\mathrm{skim}_\mathrm{evt}\,[10^6]$
+      & $N^\mathrm{unskim}_\mathrm{evt}\,[10^6]$\\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia NLO $W,Z$ samples}}\\
+      \hline
+$ W^{+} \to e^{+}\nu $ & 603391 & 4.220 (5\%) & 12 & 12 \\
+$ W^{+} \to \mu^{+}\nu $ & 603392 & 4.220 (5\%) & 12 & 12 \\
+$ W^{+} \to \tau^{+}\nu $ & 603393 & 4.220 (5\%) & 6 & 6 \\
+$ W^{-} \to e^{-}\bar{\nu} $ & 603394 & 2.756 (5\%) & 8 & 8 \\
+$ W^{-} \to \mu^{-}\bar{\nu} $ & 603395 & 2.756 (5\%) & 8 & 8 \\
+$ W^{-} \to \tau^{-}\bar{\nu} $ & 603396 & 2.756 (5\%) & 4 & 4 \\\hline
+$ Z \to ee $ $m>60\GeV$ & 603397 & 0.644 (5\%) & 4 & 4 \\
+$ Z \to \mu\mu $ $m>60\GeV$ & 603398 & 0.644 (5\%) & 4 & 4 \\
+$ Z \to \tau\tau $ $m>60\GeV$ & 603399 & 0.644 (5\%) & 1 & 1 \\
+$ Z \to ee $ $20<m<60\GeV$ & 603400 & 0.522 (5\%) & 0.7 & 0.7 \\
+$ Z \to \mu\mu $ $20<m<60\GeV$ & 603401 & 0.522 (5\%) & 0.7 & 0.7 \\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia MiNNLOPS $W,Z$ samples}}\\
+      \hline
+$ W^{+} \to e^{+}\nu $ & 604351 & 4.342 (5\%) & 11.3 & 11.3 \\
+$ W^{+} \to \mu^{+}\nu $ & 604352 & 4.342 (5\%) & 11.3 & 11.3 \\
+$ W^{+} \to \tau^{+}\nu $ & 604353 & 4.342 (5\%) & 5.6 & 5.4 \\
+$ W^{-} \to e^{-}\bar{\nu} $ & 604348 & 2.876 (5\%) & 7.5 & 7.5 \\
+$ W^{-} \to \mu^{-}\bar{\nu} $ & 604349 & 2.876 (5\%) & 7.5 & 7.5 \\
+$ W^{-} \to \tau^{-}\bar{\nu} $ & 604350 & 2.876 (5\%) & 3.6 & 3.4 \\\hline
+$ Z \to ee $ $m>60\GeV$ & 604354 & 0.654 (5\%) & 3.8 & 3.8 \\
+$ Z \to \mu\mu $ $m>60\GeV$ & 604355 & 0.654 (5\%) & 3.8 & 3.8 \\
+$ Z \to \tau\tau $ $m>60\GeV$ & 604356 & 0.654 (5\%) & 0.94 & 0.94 \\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia Diboson samples}}\\
+      \hline
+$ WW (lvlv) $ & 604493 & 0.00265 (10\%)  & 0.024 & 0.03 \\
+$ WW (lvqq) $ & 604494 & 0.01102 (10\%)  & 0.057 & 0.1 \\
+$ WZ (lvll) $ & 604495 & 0.00032 (10\%)  & 0.009 & 0.01 \\
+$ WZ (lvqq) $ & 604496 & 0.00232 (10\%)  & 0.017 & 0.03 \\
+$ WZ (lvvv) $ & 604497 & 0.00063 (10\%)  & 0.005 & 0.01 \\
+$ WZ (qqll) $ & 604498 & 0.00195 (10\%)  & 0.007 & 0.02 \\
+$ ZZ (llll) $ & 604499 & 0.00022 (10\%)  & 0.004 & 0.01 \\
+$ ZZ (qqll) $ & 604500 & 0.00195 (10\%)  & 0.007 & 0.02 \\
+$ ZZ (vvll) $ & 604501 & 0.00025 (10\%)  & 0.005 & 0.01 \\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Powheg+\Pythia top samples}}\\
+      \hline
+$ t\bar{t} $ & 410470 & 0.0689 $\times$ 0.544 (7\%)  & 1.9 & 2.8 \\
+$ t $ (s-chan.) & 410644 & 0.00054 (10\%)  & 0.006 & 0.01 \\
+$ \bar{t} $ (s-chan.) & 410645 & 0.00028 (10\%) & 0.006 & 0.01 \\
+$ t $ (t-chan.) & 410658 & 0.00545 (10\%)  & 0.6 & 1.0 \\
+$ \bar{t} $ (t-chan.) & 410659 & 0.00271 (10\%)  & 0.6 & 1.0 \\
+$ W\bar{t} $ & 410647 & 0.0030(10\%)  & 0.012 & 0.03 \\
+$ Wt $ & 410646 & 0.0030 (10\%)  & 0.012 & 0.03\\
+      \hline
+      \multicolumn{5}{l}{\textbf{\Pythia $J/\psi \to \mu\mu$ samples}}\\
+      \hline
+Prompt & 801912 & -- & 8 & 8 \\
+Non-prompt & 801917 & -- & 8 & 8\\
+\hline
+   \end{tabular}
+   \caption{Monte Carlo samples at $\sqrt{s} = 5\tev$. Samples are loosely sorted by category, each
+     sample within one category is produced with the headlined
+     generator setup. For each sample are given: a short description
+     of the process, the ATLAS MC data set number (DSID), the generator
+     cross section times any branching and
+     filter efficiencies
+     ($\sigma{\cdot} \text{BR}{\cdot}\epsilon_\mathrm{filter}$) with
+     the theoretical uncertainty in percent (``th. unc.''), and
+     finally the number of events analysed after skimming at
+     derivation production ($N^\mathrm{skim}_\mathrm{evt}$) as well as
+     the number of events originally processed and simulated
+     ($N^\mathrm{unskim}_\mathrm{evt}$). The MC equivalent luminosity
+     $N^\mathrm{unskim}_\mathrm{evt}/(\sigma{\cdot}\text{BR}{\cdot}\epsilon_\mathrm{filter})$
+     is generally in excess of $10-20$ times the data luminosity.}
+    \label{tab:samples5}
+  \end{center}
+\end{table}
+\FloatBarrier
+
+\section{Data and MC Processing}
+\label{sec:processing}
+
+All data and MC samples are processed with the release 21 ATLAS
+software. Data is processed through STDM4/6 as described above.  MC
+samples are processed through STDM4, with unskimmed processing for all
+signal $W$ and $Z$ samples.
+
+All samples are further on processed to a common \texttt{MiniTree}
+format using\\ \href{https://gitlab.cern.ch/atlas-physics/sm/wz/mw-lowmu/MiniTreeMaker13TeV}{https://gitlab.cern.ch/atlas-physics/sm/wz/mw-lowmu/MiniTreeMaker13TeV}.
+
+The \texttt{MiniTree} outputs are stored in the grid dataset
+\texttt{user.fballi.test.ds\_December2024\_b}
+and the most current processing version of all samples is
+\texttt{December2024}.
+
+Final sample processing including application of calibrations and
+corrections is done in the common \texttt{HistMaker} software,
+\href{https://gitlab.cern.ch/atlas-physics/sm/wz/mw-lowmu/HistMaker}{https://gitlab.cern.ch/atlas-physics/sm/wz/mw-lowmu/HistMaker}.
+
+\section{$z_\mathrm{vtx}$ reweighting}
+\label{sec:zvtx}
+
+The $z$-position of the primary vertex, which was selected as the hard interaction (highest $\sum
+\pt^2$ of all associated tracks) was compared between data and MC for \Zee and
+\Zmm selections to ensure a well-understood sample composition. 
+For the 5 \TeV{} sets the simulation is specifically adapted and
+perfectly matched to the data out-of-the box. 
+The 13 \TeV{} set data and simulation are not well matched (very similar to
+the standard Run 2 high-$\mu$ set) and
+the 2017 and 2018 13 \TeV{} data sets feature slightly different beam
+spots. The 13 \TeV{} MC is reweighted using the data/MC ratio from
+the displayed \Zee and \Zmm selections, which by construction makes
+the two distributions match well. More details can be found in the \ptw supporting note~\cite{Kretzschmar:2657141}.
+
+\todo{Is there an impact of this correction on the mW?}
+
+\section{Calibration of vertex selection efficiency in \Wlnu events}
+
+Primary vertices are reconstructed requiring at least two
+charged-particle tracks~\cite{ATL-PHYS-PUB-2015-026} and the hard-scatter
+vertex is chosen as the one with the largest sum of squared track transverse
+momenta. Lepton candidates are required to originate from this
+vertex. The significance of the track's transverse impact parameter
+calculated relative to the beam line, $|d_0/\sigma_{d_{0}}|$, must be
+smaller than three for muons and smaller than five for
+electrons. Furthermore, the longitudinal impact parameter, $z_0$ (the
+difference between the $z$-coordinate of the point on the track at
+which $d_0$ is defined and the longitudinal position of the primary
+vertex), is required to satisfy $|z_0 \cdot \sin(\theta)| <$ 0.5 mm.
+
+The efficiency of this requirement in \Zll events is generally above $99\%$
+and included in the tag-and-probe procedures described
+above. However, for \Wboson-boson events at low \pT, the
+reconstruction of the correct primary vertex is more challenging as it
+requires at least one additional charged-particle track from hadronic
+activity in addition to the lepton. A dedicated measurement of this
+efficiency is therefore derived for the \ptw analysis and is briefly described in Ref.~\cite{Atmani:2632159}. It is performed in
+\Zll events as function of the number of reconstructed additional tracks, i.e. excluding the leptons, and the boson \pT. The data measurement can
+then be applied to the \Wln simulation. The vertex reconstruction inefficiency in \Wboson-boson events with \ptw $< 5\,\GeV$ at
+$\sqrt{s} = 5\,\TeV\,(13\,\TeV)$ is found to be about 5\% (3\%) for
+the electron channels and 3\% (2\%) for the muon channels. It decreases towards higher \ptw,  and asymptotically reaches about $1\%$ in the
+electron channel and $0.5\%$ in the muon channel. The inefficiency is larger in the electron channels because bremsstrahlung complicates the track reconstruction and track-to-vertex association.
+The modelling of the soft activity at low \Wboson\ boson \pt\ is the main
+source of uncertainty on the vertex efficiency and its effect is estimated by observing
+the closure between different generators.
+
+\todo{Check that this generator uncertainty is sufficient for mW analysis}
+

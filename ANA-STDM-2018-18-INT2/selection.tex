@@ -1,0 +1,36 @@
+\chapter{Event Selection}
+\label{sec:eventSel}
+
+Candidate \Wln{} events are collected in data with single-lepton triggers. The primary, unprescaled triggers used in both 5 and 13~\TeV\ datasets are the $\texttt{HLT\_e15\_lhloose\_nod0\_L1EM12}$ and $\texttt{HLT\_mu14}$. These single lepton triggers require either at least one reconstructed electron with \ET larger than 15~\GeV\ passing \texttt{loose} identification requirements or one muon with \pt larger than 14~\GeV.
+
+Selected events are required to contain exactly one identified and isolated lepton (muon or electron) candidate satisfying the criteria described in Section~\ref{sec:objects}.
+Events with additional leptons of the same flavour with transverse momentum greater than 20 ~\GeV{} are discarded to lower the \Zboson\ background: the identification for those veto leptons point is \texttt{medium} for the muon channel and \texttt{loose} for the electron channel. There is no requirement on the number of leptons with different flavour than the channel under study.
+
+To reduce background contamination, in particular from multijet
+processes, events are required to have \MET{} , defined in
+Eq.~(\ref{eq:METandNeutrino}), greater than 25~\GeV{}.  The \Wboson{}
+boson transverse mass \mt{} is required to be larger than 50~\GeV,
+where \mt{} is defined as usual:
+\begin{equation}\label{eq:mt}
+{m}_{T} = \sqrt{2 {p}_{T}^{\nu}p_{T} ^{l} (1-\cos\Delta\phi^{\nu})}
+\end{equation}
+and as in Eq.~(\ref{eq:METandNeutrino}), the neutrino $\pt^\nu$ and $\phi^\nu$ are estimated by the corresponding \MET{} quantities. The \ut criteria is defined as $\ut < 25 \GeV$.
+
+In
+Tables \todo{Need all the tables with the event selection cutflows}
+$W^{\pm} \rightarrow \ell^{\pm}\nu$ signal selection event yields for
+the $\sqrt{s} = 5~\TeV$ dataset are shown, and the corresponding
+numbers for the 13~\TeV\ dataset are shown in
+Tables \todo{add tables}. A
+summary of observed compared to expected yields is then provided in
+Table \todo{add tables}.  The yields for the signal and for the
+electroweak and top backgrounds are obtained from MC samples.  The
+events referred to as ``\Wln{} BG'' in the tables and plots refer to
+the sum of \Wtaunu\ events and \Wln\ events of the wrong generated
+charge passing due to charge-misidentification.  The estimate of the
+multijet background passing due selection of leptons produced in
+semi-leptonic decays of heavy quarks, in-flight decays, or
+misidentification of photon conversions or hadrons, is done performed with
+data-driven techniques described in Section~\ref{sec:bkgs}.
+
+

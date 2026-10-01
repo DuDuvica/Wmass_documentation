@@ -1,0 +1,128 @@
+%-------------------------------------------------------------------------------
+\chapter{Physics Modelling}
+\label{sec:modelingCorr}
+%-------------------------------------------------------------------------------
+
+\todo{This whole section comes from W pT and has to be reworked for mW}
+
+The main signal event samples for $W$ and $Z$ production are generated
+using the \POWHEG\ event
+generator~\cite{Nason:2004rx,Frixione:2007vw,Alioli:2010xd,Alioli:2008gx}
+using the CT10~\cite{Lai:2010vv} PDF, interfaced to \PYTHIA[8]~\cite{Sjostrand:2007gs} using the
+AZNLO tune~\cite{STDM-2012-23}. These \PowPythia\ samples are interfaced
+to \Photos~\cite{Golonka:2005pn} to simulate the effect of final state
+QED radiation. Further details on these samples, on the background simulated samples and on alternative simulated signal samples are in Section~\ref{sec:samples}.
+
+The inclusive \Zll and \Wlnu cross sections are generally
+six-dimensional due to the two final-state leptons with fixed mass. As
+successfully employed in the 7~\TeV\ \mW\
+measurement~\cite{STDM-2014-18,Andari:1966965}, it can be conveniently parameterised
+as four quantities related to the di-lepton (or boson) system, one of
+which is a trivial $\varphi$ angle in the lab system, and two lepton
+decay angles. Instead of a five-dimensional map, it has been shown
+that the cross section can be conveniently decomposed to control the
+physics modelling in the following way:
+\begin{equation}
+\label{eqn:master_formula}
+\frac{d\sigma}{dp_1 dp_2}=\left\lbrack \frac{d\sigma(m)}{dm} \right\rbrack\left\lbrack \frac{d\sigma(y)}{dy} \right\rbrack\left\lbrack \left.\frac{ d\sigma(\pt)}{d\pt} \right|_y \left(\frac{d\sigma(y)}{dy}\right)^{-1}\right\rbrack \left\lbrack (1+\cos^2\theta) + \sum_{i=0}^7 A_i(\pt,y)P_i(\cos\theta,\phi) \right\rbrack.
+\end{equation}
+
+Here $p_1$ and $p_2$ are the lepton and anti-lepton four-momenta; m,
+\pt, and y are the invariant mass, transverse momentum, and rapidity
+of the dilepton system; $\theta$ and $\phi$ are the polar angle and
+azimuth of the lepton\footnote{Here, lepton refers to the negatively
+  charged lepton from a \Wminus\ or \Zboson\ boson, and the neutrino
+  from a \Wplus\ boson} in any given rest frame of the dilepton
+system; $A_i$ are numerical coefficients, and $P_i$ are spherical
+harmonics of order zero, one and two.
+
+Such a decomposition specifically allows a ``simple'' modelling of the
+mass-distribution (if required), the use of fixed-order predictions
+for the $y$ distribution and the 8 $A_i(\pt,y)$ coefficients (with the
+analytically known $P_i(\cos\theta,\phi)$ from the spin-1 exchange)
+and resummed or tuned parton-shower MC predictions for the boson \pT
+at fixed rapidity $d\sigma(\pt)/d\pt|_y$.
+
+\section{Boson Mass}
+
+\todo{Needs to be added}
+
+\section{Boson $p_T$ and rapidity}
+
+\todo{This text comes from the W pT result and needs to be modified for the mW analysis}
+
+The initial agreement between the detector-level transverse momentum
+distributions in data and MC is found to be not fully satisfactory,
+i.e. the difference is found to be significantly larger than the
+experimental sensitivity especially at $13\,\tev$. 
+To optimise the analysis results, the MC simulation is already
+reweighted by default in \pttruthv to guarantee the best possible data
+to MC agreement on the reconstructed \ut (or \ptll) distributions for
+$W$ (and $Z$) analyses~\footnote{To achieve this, the full analysis
+  including all calibrations and background estimates had to be
+  performed already once. Object calibrations, including the Hadronic
+  Recoil and related reweightings aer performed such that they are to
+  first order insensitive to the boson \pt modelling in the MC.}. This
+procedure ensures that the unfolding result is unbiased, and is
+referred to as the \texttt{\pt correction}. The uncertainties will be
+discussed in later sections of this note and will be derived by
+performing as many variations as possible on this correction.
+
+For the $W$ analyses, the agreement between data and
+simulation is optimised at detector level for the \ut distribution by
+minimising the following $\chi^2$:
+\begin{eqnarray}
+  \chi^2  &=&  \sum_{ij} \, \Delta^T_i \, C^{-1}_{ij} \, \Delta_j \,   \label{eqX2}
+ ,\\
+  \Delta_i  &=& ( D_i \, - B_i \,) - \, \sum_{j} \, R_{ij} \times (w_{T}(p_{T}^{W}))_j \, .
+\end{eqnarray}
+Here $C^{-1}_{ij}$ denotes the total covariance matrix, including statistical and systematic uncertainties on the observed and simulated \ut distributions;
+ $\Delta$ is the difference between the background-subtracted data distribution, ($D-B$), and the corresponding reconstruction-level simulated distribution obtained from the product between a generator-level weighting function and the response matrix, $R \, (w_{T}(p_{T}^{W}))$ .
+The weighting function, $ w_{T}(p_{T}^{W}) $, evaluated in each truth bin $j$, modifies the generated $W$-boson \pt
+distribution in the MC sample used to determine the response matrix for events passing both reconstructed-level and
+fiducial volume selection cuts (T\&R).
+ The parameters of the $w_{T}(p_{T}^{W})$ weighting function are the degrees of freedom in the minimisation procedure. A satisfactory agreement is obtained using
+\begin{equation}
+(w_{T}(p_{T}^{W}))_j  = N_j \left[\left(1 + a \, p_{T, j}^{W} + b \, {p_{T, j}^{W}}^2
+\right)*\left(1-c+c*r_\mathrm{NNPDF/CT10}(p_{T, j}^{W})\right)\right] \,    \label{eq:Wnom_bin}
+\end{equation}
+where $r_\mathrm{NNPDF/CT10}(p_{T}^{W})$ represents the ratio between predictions obtained with NNPDF3.0 and CT10NLO in
+the full phase space illustrated in Figure~\ref{fig:ratioNNPDFCT10}, and the additional terms provide more flexibility
+to the fit. $N_{j}$ is the number of events in truth bin $j$. CT10NLO is very close to the CT10 PDF used in the \POWHEG\ sample, and NNPDF3.0 is representative of more modern PDF sets and was specifically used in the \Sherpa sample. 
+
+The reweighting functions are optimised separately for each process and each centre-of-mass energy. They are derived over the range $\pt = 0 - 100 \gev$ and the value of the correction is frozen at $\ptw=100$~GeV for any larger \pt. The 13~TeV $W$ reweighting functions are shown in \todo{Figure X} for the electron and muon channels. The corresponding plots at $\sqrt{s} = 5$~\TeV\ are shown in \todo{Figure X} . Since the $e$ and $\mu$ channel compatibility is good, the average of the two reweighting functions is eventually used.
+The effect of this \pt\ reweighting on the reconstructed \ut distributions is shown in \todo{Figure X}  for 13 TeV and Figure \todo{Figure X}  for 5 TeV.
+
+
+For the \Zboson\ process the same approach is used, with the addition that separate reweightings are derived for the \ptdilep\ and \ut\ distributions.  Figure~\ref{fig:rew_sf_zpt} shows the resulting best reweighting functions at $\sqrt{s} = 13$~\TeV\ and $\sqrt{s} = 5$~\TeV. For the \ut measurement, the reweighting function is obtained from a simultaneous fit to the electron and muon channels, while  the \ptdilep measurement keeps the averaged reweighting function, as done for the $W$-boson channels (more details are given in Appendix ~\ref{sec:zpt_bias_new}). The general consistency between the reweighting functions obtained for the \ut and \ptdilep distributions, at both center-of-mass energies, indicates that this method catches genuine physics effects. At the same time, it's clear that especially at $\sqrt{s} = 13$~\TeV\ the \ptdilep\ reweighting is able to catch a feature at smallest \pT\ that is lost in the \ut\ resolution.~\footnote{The potential uncertainties of such effects are covered by alternative reweighting functions as is explained later.} Figures~\ref{fig:datamc_nominalMC5} ands~\ref{fig:datamc_nominalMC13} show the reconstruction-level data/MC ratios obtained from this procedure.
+
+
+The corresponding uncertainties are discussed in \todo{sections X}.
+
+
+\section{Angular correlations}
+
+The polarisation of the vector boson is entirely encoded in the 8
+$A_i$ coefficients of equation~\ref{eqn:master_formula}.  The angular
+correlations between the two decay leptons, arising from the
+polarisation of the considered vector boson, are not properly taken
+into account in our baseline simulation of \Wboson\ and \Zboson\
+samples that uses \PowPythia.  This generator is NLO accurate in QCD,
+and also suffers from a known feature in the limit where \pttruthv\
+goes to 0 ($A_0$ becomes negative). It was shown in
+Ref.~\cite{STDM-2014-10} that NNLO predictions for the $A_i$
+coefficients correctly describe the measurements for the \Zboson\
+at 8~\TeV. Therefore, as in the \mW\ analysis at
+7~\TeV~\cite{STDM-2014-18}, the angular coefficients are reweighted
+to NNLO predictions.
+
+To obtain this better description of the angular coefficients, DYTURBO is used at NNLO to predict these as a function of boson \pt\ and rapidity for all 3 processes (\Wplus, \Wminus\ and \Zboson). The CT10NNLO PDF set is used.
+
+The $\cos(\theta)$ and $\phi$ are then reweighted according to the procedure described in~\cite{STDM-2014-18}, with the following event weight :
+\begin{equation}
+\label{eqn:weight_pol}
+w = \frac{1+\cos^2\theta + \sum_{i=0}^7 A_i'(\pt,y)P_i(\cos\theta,\phi)}{1+\cos^2\theta + \sum_{i=0}^7 A_i(\pt,y)P_i(\cos\theta,\phi)},
+\end{equation}
+where angular coefficients of \PowPythia\ are used in the denominator and those predicted at $\mathcal{O}(\alpha_S^2)$ by DYTURBO in the numerator.
+
+The angular coefficients in DYTURBO at NLO, NNLO and in \PowPythia\ are shown as a function of \pttruthv\ in figures \todo{Add any figures}.

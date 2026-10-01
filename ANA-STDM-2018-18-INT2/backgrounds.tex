@@ -1,0 +1,536 @@
+%-------------------------------------------------------------------------------
+\chapter{Electroweak and top backgrounds}
+\label{sec:ewtopbkgs}
+%-------------------------------------------------------------------------------
+
+\todo{Describe cross sections and (normalization) uncertainties}
+
+Background contributions from single-boson and diboson production (electroweak background)
+and \ttbar and single-top-quark production (top-quark background)
+are directly estimated from 
+the MC simulated samples. They are dominated by $W \to \tau\nu$
+events with $\tau \to \ell\nu\nu$ at low \ut and top-quark pair
+production at higher \ut. In the electron channels there is an
+additional background contribution from \Wenu events where the reconstructed electron
+charge is mismeasured.
+
+%-------------------------------------------------------------------------------
+\chapter{Multijet background}
+\label{sec:mjbkg}
+%-------------------------------------------------------------------------------
+
+Background from QCD multijet (MJ) production cannot be reliably
+simulated and has to be derived from data. A short summary of the methodology is described in this paragraph. 
+Depending on the lepton
+flavour, the MJ background has significant contributions from 
+leptons produced in semileptonic decays of heavy quarks, pion and kaon decays,
+or photon conversions, and is referred to as fake leptons below. The multijet yields in the electron and muon selections of the
+\Wboson-boson analysis are estimated separately for positively and negatively
+charged samples. As multijet production is concentrated at lower
+values of \ptl, \met\ and \mt\ as compared to the signal, this
+background is estimated with a template fit in these kinematic
+distributions in a phase-space region with relaxed \met\ and \mt\
+selections, called the \textit{fit region}. The \ptl, \met\ and \mt\ templates in the fit region
+for the \Wln signal and electroweak and top-quark
+backgrounds are obtained using simulation. The multijet templates are
+built from events passing the same kinematic selections as the nominal
+selection except that the lepton isolation requirement is inverted.
+In the final step, the multijet yields in the signal region are
+determined by multiplying the fit region yields by a transfer factor
+that corrects for the
+acceptance of the \met and \mt\ selections and the impact of the inverted isolation
+requirements needed to extract the multijet background templates. The multijet distribution is estimated in each channel for the Profile likelihood Fit separately. 
+
+Section~\ref{sec:mj_method} presents the general methodology for the multijet background estimate in $W$ events, and discusses how the various regions and templates are defined and corrected.
+Section~\ref{sec:mj_yield} is a summary of the multijet yield derivation, Section~\ref{sec:mj_shape} explains the multijet shape estimation.
+Section~\ref{sec:mj_uncertainty} discusses the uncertainties associated with the multijet estimation.
+Section~\ref{sec:mj_results} presents the 5 and 13~TeV results in the electron and muon channels. 
+
+
+%-------------------------------------------------------------------------------
+\section{Multijet background methodology}
+\label{sec:mj_method}
+%------------------------------------------------------------------------------
+
+
+In this analysis, the $W$‑boson phase space is defined by the following selection criteria: $\ptl > 25~\text{GeV}$; $\met > 25~\text{GeV}$;  $\mt > 50~\text{GeV}$; lepton isolation is imposed using the variable \texttt{ptcone20/Min(pT, 50~GeV)} with the signal region defined by \texttt{ptcone20/Min(pT, 50~GeV)}$ < 0.1$ (the choice of the lepton‑isolation working point is described in Appendix~A.1 of Ref.~\cite{Xu:2657146}); and finally, the hadronic recoil is required to satisfy $u_T < 25~\text{GeV}$.
+
+As shown in Figure~\ref{fig:define4regions}, several event categories are defined for the multijet estimation, corresponding to different regions in phase space and isolation:
+%
+\begin{itemize}
+    \item signal region (SR): isolated leptons (\texttt{ptcone20/Min(pT,~50~GeV)}$<0.1$), signal requirement on \ptl, \met and \mt;
+    \item fit region (FR): isolated leptons, relaxed kinematic requirements: $\met>0$~\gev, $m_\text{T}>0$~\gev;
+    \item control region 1 (CR1): anti-isolated leptons (\texttt{ptcone20/Min(pT,~50~GeV)}$>0.1$) with FR kinematic requirements;
+    \item control region 2 (CR2): anti-isolated leptons with SR kinematic requirements.
+\end{itemize}
+%
+With these definitions, the SR is a subset of the FR, and CR2 is a subset of CR1.
+The relaxed kinematic and isolation requirements in FR, CR1 and CR2 are necessary to increase the multijet statistics.
+
+The aim of the procedure is to estimate both the yield and the shape of the multijet background in the signal region (SR).
+First, a dedicated recoil correction in CR1 and CR2 needs to be implemented due to the increased activity around the lepton.
+The MJ yield is estimated by first determining the MJ shape in the FR through an extrapolation from CR1.
+A template fit (fraction fit) is then performed in the FR to obtain the MJ yield within that region.
+Finally, the MJ yield in the SR is estimated by using the yield ratio CR2/CR1.
+For the MJ shape estimation, the MJ shape in the SR is derived by extrapolating shape information from CR2.
+The MJ estimation is done for each fit input observables (\mt, \ptl and \met) in several categories:
+%
+\begin{itemize}
+	\item 8 measurement channels,
+	\item 5 $u_T$ categories,
+	\item 4 $\eta$ categories.
+\end{itemize}
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/define4regions1.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/define4regions2.pdf}}
+    \caption{Left: The definition of 4 regions used in MJ study according to the division of fiducial space and lepton isolation. Right: Visulatization of the four regions used in MJ study according to the division of fiducial space and lepton isolation.}
+    \label{fig:define4regions}
+\end{figure}
+%
+
+\subsection{Recoil Correction in CR1 and CR2}
+\label{sec:mj_recoilCorr}
+
+The recoil reconstruction uses all PFOs in the event, excluding a cone of $\Delta R =0.2$ around the selected leptons. 
+To compensate for the underlying event and pile-up energy activity removed by this procedure, another same-size cone of activity in the event is selected, centered at the same $\eta$, but away in azimuth from any lepton and from hard activity; a vector, of magnitude given by the energy observed in this cone and oriented along the removed lepton, is added to the recoil. 
+This procedure is successful in the signal region, where leptons are isolated and typically surrounded by soft activity.
+
+As described in Ref~\cite{Xu:2657146} (Section 3.2.1) this cone replacement procedure fails in the anti-isolated regions. 
+The compensation can be improved by applying the correction
+%
+\begin{equation}
+  \vec{u}^{\mathrm{corr}} = \vec{u}^{\mathrm{baseline}} + \vec{u}^{\mathrm{iso}} \, , \qquad \mathrm{where}
+\end{equation}
+%
+\begin{equation}
+  \vec{u}^{\mathrm{iso}} = k_{\mathrm{iso}} \times \texttt{ptcone20} \vec{n}_l.
+\end{equation}
+%
+where $\vec{u}^{\mathrm{baseline}}$ is the standard recoil reconstruction, $\vec{u}^{\mathrm{iso}}$ represents the present correction, $ \vec{n}_l$ is the unit vector aligned with the lepton direction and $k_{\mathrm{iso}}$ a parameter accounting for a possible difference in scale between the $\texttt{ptcone20}$ energy and the energy removed around the lepton.
+Following Ref~\cite{Xu:2657146} the parameters $k_{\mathrm{iso}}$ can be extracted from the data with a linear fit.
+This procedure is repeated and really similar values are obtained, the small differences can be explained by small changes in the electron, muon and recoil calibrations.
+The estimated values for $k_\mathrm{iso}$ are shown in Table~\ref{tab:kiso}.
+%
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ll}
+  \hline
+  \textbf{Channel} & \textbf{$k_\mathrm{iso}$} \\
+  \hline
+  13 TeV  $W^- \rightarrow e^- \nu$  & 1.196 $\pm$ 0.014\\
+  13 TeV  $W^+ \rightarrow e^+ \nu$  & 1.178 $\pm$ 0.009\\
+  13 TeV  $W^+ \rightarrow mu^+ \nu$  & 1.429 $\pm$ 0.004\\
+  13 TeV  $W^- \rightarrow mu^- \nu$  & 1.426 $\pm$ 0.004\\
+  \hline
+  5 TeV  $W^- \rightarrow e^- \nu$  & 1.141 $\pm$ 0.019\\
+  5 TeV  $W^+ \rightarrow e^+ \nu$  & 1.16 $\pm$ 0.02\\
+  5 TeV  $W^+ \rightarrow mu^+ \nu$  & 1.422 $\pm$ 0.009\\
+  5 TeV  $W^- \rightarrow mu^- \nu$  & 1.383 $\pm$ 0.009\\
+  \hline
+  \vspace{0.3cm}
+  \end{tabular}
+  \caption{The fitted values of $k_\mathrm{iso}$ for 5 TeV and 13 TeV, the uncertainties are the statistical uncertainties resulting from the fit.}
+  \label{tab:kiso}
+\end{table}
+%
+This recoil correction in the control regions is applied prior to the cut $u_T <25$~GeV.
+
+
+
+%-------------------------------------------------------------------------------
+\section{Multijet yield estimation}
+\label{sec:mj_yield}
+%------------------------------------------------------------------------------
+
+The MJ yield estimation is performed in three steps:
+%
+\begin{enumerate}
+  \item Estimate the MJ shape in the FR.
+  \item Template Fit to obtain the MJ yield in the FR.
+  \item Extrapolate the yield to the SR.
+\end{enumerate}
+%
+
+\subsection{MJ shape estimation in fit region}
+\label{sec:mj_shapeFR}
+
+To determine the number of multijet events in the fit region via a template fit, the shape of the multijet background is determined from CR1.
+To remove any dependence of the multijet shape from the isolation criteria itself, control regions CR1 and CR2 are split into successive intervals of the isolation variable as illustrated in Figure~\ref{fig:4regionscut} and are defined as intervals with lepton isolation of \texttt{ptcone20/Min(pT,~50~GeV)} in [0.1, 0.2, 0.3, 0.4, 0.5].
+The multijet shape in the FR is then extrapolated from these intervals in the CRs.
+%
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{backgrounds/4regionscut.pdf}
+    \caption{Intruducing isolation-dependent regions in CR1 and CR2 to perform an extrapolation to the FR or the SR.}
+    \label{fig:4regionscut}
+\end{figure}
+%
+
+The normalized distribution of multijet events, $H_\text{MJ, CR1}^{i} [x]$ in a given anti-isolated slice (i) is derived for CR1 as 
+%
+\begin{eqnarray}
+	H_\text{MJ, CR1}^{i} [x] &=&  \frac{N_\text{data, CR1}^\text{i} [x] -N_\text{EW, CR1}^\text{i} [x]}{N_\text{total}^{i}} ,
+\end{eqnarray}
+%
+where $N_\text{data, CR1}^\text{i} [x]$ is the number of data events in CR1 for isolation slice $i$ and for the kinematic observable range $x$, $N_\text{EW, CR1}^\text{i} [x]$ is the number of EW background processes and $N_\text{total}^{i}$ is the total number of data events in CR1 for a given isolation slice $i$.
+The normalized distribution is a function of $x$, which corresponds to one of the kinematic distributions used in the fit.
+% The amount of EW processes in the isolation slices is 3.25\% for the isolation slice [0.1 to 0.2] and 0.37\% for the isolation slice [0.4 to 0.5].
+Examples of these distributions for each isolation slice are shown in Figure~\ref{fig:shape_extrapolation}. There is a clear shape dependence of the MJ distribution as a function of the isolation slice. 
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/mT_loose_extr_ratio.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/elPt_loose_extr_ratio.pdf}}
+    \caption{Visualisation of the isolation dependence of the $m_T$ (left) and $p_T^l$ (right) distributions in the $W^+ \rightarrow e^+\nu$ channel at $\sqrt{s}=13$~TeV. In addition the shape extrapolation to the FR is shown (black line).}
+    \label{fig:shape_extrapolation}
+\end{figure}
+%
+
+To estimate the shape of the multijet background in FR, an averaged two-point extrapolation is used:
+%
+\begin{equation}
+  H_{MJ, FR} [X] = H_{MJ, CR1}^{1}[X] - \Delta^{CR1}[X].
+  \label{eqn:FractionFit_Template_Shape_Correction}
+\end{equation}
+%
+where the multijet shape in the first isolation slice ([0.1, 0.2]) is corrected by an extrapolation factor $\Delta^{CR1}[X]$:
+%
+\begin{eqnarray}
+  \Delta^{CR1}[X] = \frac{1}{2} \bigg\{ \frac{H_{MJ, CR1}^{3}[X]-H_{MJ, CR1}^{1}[X]}{2} + \frac{H_{MJ, CR1}^{4}[X]-H_{MJ, CR1}^{2}[X]}{2} \bigg\} .
+  \label{eq:deltax}
+\end{eqnarray}
+%
+The results of the extrapolated multijet shape in the FR is also shown in Figure \ref{fig:shape_extrapolation}.
+Instead of an averaged two-point extrapolation, a four-point linear extrapolation was also compared.
+As seen in Figure \ref{fig:comparison_to_linear}, the difference between the two extrapolation models is negligible. 
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/mT_Proper_original_Multiple_bins_loose.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/mT_Proper_original_loose}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/elPt_Proper_original_Multiple_bins_loose.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/elPt_Proper_original_loose}}
+    \caption{Comparison of the two point extrapolation with a linear extrapolation to the FR. Left: extrapolation for individual bins of the distributions. The dotted lines are the linear extrapolation, the dashed lines are the two point extrapolation. Right: Control plot showing the similarity of the two extrapolation methods. Results are shown for $m_T$ (top) and $p_T^l$ (bottom).}
+    \label{fig:comparison_to_linear}
+\end{figure}
+%
+To estimate the impact of the signal contamination in CR1 for the isolation slice [0.1,0.2] an additional study of the shape extrapolation is performed: the isolation slices are shifted by 0.05, now covering the isolation region [0.15,0.55].
+This shift is illustrated in Figure~\ref{fig:comparison_to_shifted} (bottom).
+In order to derive the multijet shape in the FR it is necessary to modify Eq.~\ref{eqn:FractionFit_Template_Shape_Correction} by a factor of 1.5 as 
+% 
+\begin{equation}
+  H_{MJ, FR} [X] = H_{MJ, CR1}^{1}[X] - \frac{3}{2} \cdot \Delta^{CR1}[X],
+\end{equation}
+%
+with $H_{MJ, CR1}^{1}[X]$ now being derived in the isolation slice [0.15,0.25].
+A comparison between the obtained multijet shapes in the FR is shown in Figure~\ref{fig:comparison_to_shifted} (bottom).
+The shape differences are rather small, the effect on the template fit in the fit region has been determined to be negligible compared to the dominating yield uncertainties.
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/defineshiftedslices.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/elPt_Proper_Slice_comp_loose.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/mT_Proper_Slice_comp_loose.pdf}}
+    \caption{Top: Visualisation of the shifted isolation regions.
+    Bottom: Comparison of the nominal FR extrapolation result to the result obtained with shifted isolation slices. Results are shown for $p_T^l$ (left) and $m_T$ (right).}
+    \label{fig:comparison_to_shifted}
+\end{figure}
+%
+
+
+\subsection{Template fit in fit region}
+\label{sec:mj_fitFR}
+
+The template fit is performed in the FR to obtain the MJ yield in said region.
+It is performed as a function of \ptl, \mt or \met, inclusively and in categories of ($\eta$, $u_T$).
+Figure~\ref{fig:fit_example} shows the inclusive distributions in FR, after the fit.
+The MJ template $H_{MJ}^{FR, [0,0.1]}$ is the one described above, while the EW template, which includes the W and all other EW processes, is derived from the MC.
+The fit is done using ROOT's TFractionFitter and returns the fractional change of events for the signal and MJ distributions with respect to the their pre-fit normalizations.
+The total number of events in FR, expressed via the fractional changes returned by the fit is
+%
+\begin{equation}
+  H_{Data}^{FR, [0,0.1]} = \alpha \cdot H_{EW}^{FR, [0,0.1]} + (1-\alpha) \cdot H_{MJ}^{FR, [0,0.1]},
+  \label{eq:mjfit1}
+\end{equation}
+%
+where the fit parameter $\alpha$ is varied to maximise the agreement.
+In this setup $\alpha$ is the electroweak fraction and $(1-\alpha)$ is the multijet fraction.
+The MJ yield in the FR is then caluclated as
+%
+\begin{equation}
+  N_{MJ}^{FR} = (1-\alpha) \cdot N_{Data}^{FR}, \qquad \Delta N_{MJ}^{FR} = \Delta\alpha \cdot N_{Data}^{FR}.
+\end{equation}
+%
+During the fit it was ensured that the value of $\alpha$ is always in agreement with one.
+As seen in Figure~\ref{fig:fit_example}, the post-fit agreement is generally very good.
+For fits performed in categories of ($\eta$, $u_T$) the fits are still in good agreement, due to the limited statistics the uncertainty on the fit parameter $\alpha$ increases.
+As an example, Figure \ref{fig:fit_example2} shows the result for ($\eta_2$, $u_{T,2}$).
+
+As an additional cross check the fit is also implemented with two free parameters:
+%
+\begin{equation}
+  H_{Data}^{FR, [0,0.1]} =  \alpha_{EW} \cdot H_{EW}^{FR, [0,0.1]} + \alpha_{MJ} \cdot H_{MJ}^{FR, [0,0.1]}.
+\end{equation}
+%
+This changes the result for the MJ yield in the FR by less than one event in each fit.
+Hence, this source of uncertainty is also considered negligible.
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/FR_ptl.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/FR_mT.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/FR_met.pdf}}
+    \caption{Results for the template fit in the FR.}
+    \label{fig:fit_example}
+\end{figure}
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/FR_ptl_ut2_eta2.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/FR_mT_ut2_eta2.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/FR_met_ut2_eta2.pdf}}
+    \caption{Results for the template fit in the FR in the category ($\eta_2$, $u_{T,2}$).}
+    \label{fig:fit_example2}
+\end{figure}
+%
+
+\subsection{Estimate of MJ yield in the signal region}
+\label{sec:mj_resultSR}
+
+The fitted multijet yield in the FR is extrapolated to the SR. 
+For this the ratio of MJ events between CR1 and CR2 is used, however, this ratio is also dependent of the isolation slice.
+For each isolation slice the corrected MJ yield is calculated as 
+%
+\begin{equation}
+  N_{MJ}([a,b]) = N_{MJ}^{FR} \cdot \frac{N_{MJ}^{CR2,[a,b]}}{N_{MJ}^{CR1[a,b]}} = N_{MJ}^{FR} \cdot \frac{N_\mathrm{MJ-CR2}^i}{N_\mathrm{MJ-CR1}^i}.
+  \label{eq:mjfit2}
+\end{equation}
+%
+Here $N_{MJ}([a,b])$ is defined as the number of MJ events in the SR, estimated in the anti-isolated slice ($i$).
+The uncertainty on this estimation is calucalted as
+%
+\begin{equation}
+  \Delta N_{MJ}([a,b] = \sqrt{\left(\Delta N_{MJ}^{FR} \cdot \frac{N_{MJ}^{CR2,[a,b]}}{N_{MJ}^{CR1,[a,b]}} \right)^2+ \left( N_{MJ}^{FR} \cdot \Delta\left( \frac{N_{MJ}^{CR2,[a,b]}}{N_{MJ}^{CR1,[a,b]}}\right)\right)^2}.
+\end{equation} 
+%
+The uncertainty $\Delta N_{MJ}^{FR}$ is propagated from the template fit in the last step.
+The second part of the equation accounts for statistical uncertainties of the number of events in CR1 and CR2.
+
+The values of $N_{MJ}([a,b])$ as a function of the isolation slice is shown in Figure~\ref{fig:inclusive_extrapolation} for \ptl, \met\ and \mt in the fully inclusive case.
+Figure~\ref{fig:categorised_extrapolation} shows the same for \ptl, \met\ and \mt in the category ($\eta_2$, $u_{T,2}$).
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/Extrap_met.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/Extrap_mT.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/Extrap_ptl.pdf}}
+    \caption{Extrapolation of the multijet yield to the SR for observables \met (top) \mt (left) and \ptl (right). The extrapolation target is 0.025 in both cases.
+    Several possible extrapolations are shown: a linear extrapolation based on all isolation slices (blue), a quadratic extrapolation (red) and a linear extrapolation only including the first three isolation slices (green).
+    The uncertainties on the extrapolation are visulaised for the four-point-linear case (blue suqare) as well as the quadratic extrapolation (red square).}
+    \label{fig:inclusive_extrapolation}
+\end{figure}
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/Extrap_ut2eta2_met.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/Extrap_ut2eta2_mT.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{backgrounds/Extrap_ut2eta2_ptl.pdf}}
+    \caption{Extrapolation of the multijet yield to the SR for observables \met (top) \mt (left) and \ptl (right) in the ($\eta_2$, $u_{T,2}$) category. The extrapolation target is 0.025 in both cases.
+    The extrapolation target is 0.025 in both cases.
+    Several possible extrapolations are shown: a linear extrapolation based on all isolation slices (blue), a quadratic extrapolation (red) and a linear extrapolation only including the first three isolation slices (green).
+    The uncertainties on the extrapolation are visulaised for the four-point-linear case (blue suqare) as well as the quadratic extrapolation (red square).}
+    \label{fig:categorised_extrapolation}
+\end{figure}
+%
+
+The four isolation slices are fit to a linear function and the number of MJ events in the SR is evaluated at an isolation value of $0.025$ \,.
+This average isolation of the multijet background has been studied in Ref~\cite{Xu:2657146} (Section 3.2.3) with $b\overline{b}$ and $c\overline{c}$ samples in the muon and antimuon channel.
+The fassociated yield uncertainty in the SR is given by the linear fit uncertainty evaluated at the isolation value of $0.025$ \,.
+The difference to an extrapolation to zero is always covered with the yield uncertainty.
+
+
+\subsection{Cross Checks and Closure}
+
+The default method for the MJ yield extrapolation is a linear fit that uses all four isolation slices.
+The associated uncertainty on the MJ yield is taken from the uncertainty of this linear fit.
+In addition to the default method, two alternative approaches were investigated.
+The first is a three-point linear fit, shown in green, in which the fourth isolation point is excluded.
+The second is a quadratic fit, shown in red.
+
+For each observable, $160$ extrapolations are performed across the ($\eta, u_T$) fit categories: 8 (fit channels) $\cdot$ 4($\eta$) $\cdot$ 5($u_T$)
+A comparison between the four-point linear fit and the three-point linear fit shows disagreement in only 2 out of 160 extrapolations, i.e.\ the difference between the approaches is not covered by the four-point linear fit uncertainty.
+In these cases the associated yield uncertainty was inflated by using the difference between the approaches as the new uncertainty.
+
+A comparison between the four-point linear fit and the quadratic fit shows disagreement in 19 out of 160 extrapolations, some examples are shown in Figure~\ref{fig:mj_quad}.
+These cases show that the quadratic fit is either strongly driven by the fourth isolation point or is overfitting the data.
+Based on these studies, the default approach for the ($\eta, u_T$) fit categories is to use the linear fit with all four isolation slices and to assign the MJ yield uncertainty from the uncertainty of this fit.
+The quadratic fit and the three-point linear fit are therefore not retained as part of the default procedure.
+%
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=\textwidth]{backgrounds/mj_quadExp.pdf}
+    \caption{Examples for extrapolations where a quadratic assumption does not hold. The quadratic fit (red line) is either driven by the fourth point or overfitting, leading to unphysical results for the multijet yield.}
+    \label{fig:mj_quad}
+\end{figure}
+%
+
+
+The slopes of the extrapolation are visualised in Figure~\ref{fig:mj_slopes}.
+A clear dependence on both $\eta$ and $u_T$ is visible.
+An extrapolation in the ($\eta, u_T$)-inclusive case does not capture this dependence.
+%
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=\textwidth]{backgrounds/mj_slopes.pdf}
+    \caption{Dependence of the multijet slope with respect to the ($\eta, u_T$) category that it was obtained in. It is clearly visible that the slope depends strongly on $u_T$. A $u_T$-inclusive model does not account for this dependency.}
+    \label{fig:mj_slopes}
+\end{figure}
+%
+
+The inclusive case (integrated over $\eta$ and $u_T$) is shown in Figure~\ref{fig:inclusive_extrapolation}.
+In each observable there is a significant difference between the quadratic fit extrapolation and the linear fit extrapolation.
+In order to address this a dedicated closure check is performed for each observable (\ptl, \mt, \met): the sum of the yield results in ($\eta, u_T$) categories is compared to the inclusive yield, estimated by a linear or a quadratic fit.
+As an example, for \ptl the comparison can be written as:
+%
+\begin{equation}
+  MJ(p_T^l) = \sum_\eta MJ(p_T^l(\eta)) = \sum_\eta \sum_{u_T} MJ(p_T^l(\eta,u_T)).
+  \label{eq:mj_closure}
+\end{equation}
+%
+Figure~\ref{fig:mj_closure} shows the difference between the inclusive yield and the sum of the $u_T$ categorised yields, both fully inclusive and as a function of $\eta$.
+The blue dots visualise the results for a full linear extrapolation, closure with 0 is always obtained.
+The red dots result from choosing a quadratic extrapolation for the inclusive model, which leads to significant differences to the sum of the $u_T$ categories.
+These studies again show that the linear extrapolation leads to consistent results, while the quadratic extrapolation suffers from systematic biases.
+Therefore, no improved model for the multijet yield estimation in the inclusive case is required.
+%
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=\textwidth]{backgrounds/mj_closure.pdf}
+    \caption{Closure cross-check for the MJ yield estimation. The sum of the $u_T$-differential yields is compared with the yield estimated with the inclusive distribution. The blue points visualise the closure assuming a linear extrapolation in the inclusive case, the red points are obtained with a quadratic extrapolation.}
+    \label{fig:mj_closure}
+\end{figure}
+%
+
+Finally, the multijet yields are compared between positive and negative charges, since the multijet yield is charge-independent.
+The difference for each channel is shown in Figure~\ref{fig:mj_charge_dependence}.
+Positive- and negative-charge distributions agree well, especially in the ($\eta, u_T$) categories.
+In the inclusive case, the positive-charge multijet yields are consistently slightly higher, which again indicates the incompleteness in the model.
+%
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=\textwidth]{backgrounds/mj_charge_dependence.pdf}
+    \caption{Difference between multijet yields in the positive and negative charged electron channels. In the ($\eta, u_T$) categories the results are in agreement with zero, in the inclusive cases there is a slight bias towards the positive charged channel.}
+    \label{fig:mj_charge_dependence}
+\end{figure}
+%
+
+%-------------------------------------------------------------------------------
+\section{Multijet shape estimation}
+\label{sec:mj_shape}
+%------------------------------------------------------------------------------
+
+
+In the fully inclusive and $u_T$-inclusive categories the shape of the multijet background in the signal region is determined by extrapolating the distributions observed in different anti-isolated slices in CR2.
+Four isolation ranges (\texttt{ptcone20/Min(pT, 50 GeV)} within [0.1, 0.2, 0.3, 0.4, 0.5] as above) are used to determine the extrapolation.
+For each observable $X$ ($X = p_\text{T}^\ell$, \met, $m_\text{T}$ and so on), the shape extrapolation uses a formula similar to Eq.~\ref{eq:deltax}, except the MJ shapes in CR1 are replaced by those in CR2:
+%
+\begin{equation}
+  H_{MJ}^{SR}[X] = H_{MJ}^{[0.1,0.2]}[X] + \Delta^{CR2}[X] .
+\label{eq:CR2_shape}
+\end{equation}
+%
+In the ($\eta, u_T$) categories such an extrapolation is not applied, because the isolation slices are heavily affected by statistical fluctuations.
+Instead, the isolation slice in CR2 which is closest to the SR ([0.1,0.2]) is used as a shape in the SR.
+
+The resulting SR shape is affected by statistical fluctuations due to the limited number of events in the underlying CR2 slices.
+These fluctuations may lead to unphysical fluctuations in the multijet template.
+To suppress this effect, a KDE (Kernel density estimation) smoothing algorithm is applied to the extracted multijet distribution.
+In this algorithm, the bandwidth parameter $\rho$ controls the degree of smoothing. 
+While larger values of $\rho$ reduce bin-to-bin fluctuations more effectively, they can wash out features of the underlying distribution.
+Conversely, smaller values of $\rho$ preserve more of the intrinsic structure at the expense of retaining additional statistical noise.
+Since there is no single correct choice for the optimal value of $\rho$, the smoothing is repeated for several values of $\rho$.
+The resulting variation in the smoothed multijet template, relative to a nominal smoothing choice, is treated as the systematic shape uncertainty.
+Examples for the estimated multijet shape are shown in Figure~\ref{fig:mj_shape}.
+%
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=\textwidth]{backgrounds/mj_shape_variation.pdf}
+    \caption{Examples for multijet shape variations for different choices of the parameter $\rho$. 
+    The red line shows the result for $\rho=0.75$, the default value for the smoothing parameter. 
+    The systematic uncertainty is determined by using $\rho=0.5$ and $\rho=1$.}
+    \label{fig:mj_shape}
+\end{figure}
+%
+
+
+%-------------------------------------------------------------------------------
+\section{Systematic Uncertainties}
+\label{sec:mj_uncertainty}
+%-------------------------------------------------------------------------------
+
+The uncertainty in the MJ background estimation dominantly arises from 3 aspects: systematic uncertainties in the estimation of the yield, systematics in the determination of the shape, and statistics.
+These three components have different correlation patterns: systematic uncertainties in yield and shape tend to be correlated across the channels, while statistical uncertainty is uncorrelated due to its statistical nature.
+All sources of uncertainty investigated in this analysis are discussed below.
+
+The following sources of uncertainty are assumed uncorrelated among channels:
+
+%
+\begin{itemize}
+  \item Bin-by-bin uncorrelated data and MC statistics: the statistical uncertainty from the limited data and MC samples is taken from the results of shape extrapolation according to Eq.~\ref{eq:CR2_shape}.
+  \item Uncertainty in the yield caused by the linear extrapolation as a function of isolation.
+  The uncertainty of the linear extrapolation comes from the error bars in Figure~\ref{fig:categorised_extrapolation} that account for the statistical uncertainty in the control regions and the fraction uncertainty of MJ in the FR.
+  This source of uncertainty is the dominating yield uncertainty and propagated to the final output of MJ estimation.
+  \item Uncertainty of the shape due to the choice of the smoothing parameter. 
+  The result of the smoothing is impacted by the amount of statistical fluctuations in the unsmoothed distribution.
+  This source of uncertainty is propagated to the final output of MJ estimation.
+\end{itemize}
+%
+The following potential sources of uncertainty are correlated across channels, and across bins in a given kinematic distribution:
+%
+\begin{itemize}
+  \item Uncertainty due to the shape correction which is used to estimate the shape in the SR or FR.
+  A comparison to the shape estimated with moved slices ([0.15, 0.55]) and with a full linear extrapolation has been implemented.
+  The differences were found to be negligible.
+  \item Uncertainty due to the chosen number of parameters in the template fit.
+  A two parameter fit was implemented as a comparison, the difference is less than one event and hence negligible.
+  \item Uncertainty in the luminosity and in the cross sections of the simulated samples, assumed in the subtraction of the EW+top processes from CR1 and CR2.
+  Negligible with respect to the other uncertainties.
+  \item Uncertainty in the choice of the extrapolation target for the isolation scan, estimated by changing the isolation target from 0.025 to 0.
+  This difference is always covered by the uncertainty of the linear extrapolation.
+  \item The uncertainty in the isolation correction ($k_{\text{iso}}$ in Table~\ref{tab:kiso}) is estimated by changing the isolation correction by 10\%.
+  The effect on the multijet yield and shape is negligible.
+  \item The uncertainty of the yield and shape due to the dependency of the determination on the assumed value for $\Delta m_W$.
+  This impact is further discussed in appendix~\ref{a:mj_mW_dependency}.
+\end{itemize}
+%
+Among these sources the uncertainty due to the linear extrapolation is dominant for the multijet yield, while the multijet shape uncertainty is dominated by the choice of the smoothing parameter $\rho$.
+Other sources are found to be sub-dominant in comparison.
+
+
+%-------------------------------------------------------------------------------
+\section{Yield Results}
+\label{sec:mj_results}
+%-------------------------------------------------------------------------------
+
+The results of for the multijet yields can be found in Tables~\ref{tab:wplusmunu5TeV}, \ref{tab:wminusmunu5TeV}, \ref{tab:wplusenu5TeV}, \ref{tab:wminusenu5TeV}, \ref{tab:wplusmunu13TeV}, \ref{tab:wminusmunu13TeV}, \ref{tab:wplusenu13TeV}, \ref{tab:wminusenu13TeV}.
+The results in each individual category agrees within uncertainties for the three observables (\ptl, \mt, \met), with only few exceptions.
+The average multijet yield and the largest of the three uncertainties is propagated to the profile likelihood fit of $m_W$.
+
+\input{figures/backgrounds/latex_tables/wplusmunu5TeV.tex}
+\input{figures/backgrounds/latex_tables/wminusmunu5TeV.tex}
+\input{figures/backgrounds/latex_tables/wplusenu5TeV.tex}
+\input{figures/backgrounds/latex_tables/wminusenu5TeV.tex}
+\input{figures/backgrounds/latex_tables/wplusmunu13TeV.tex}
+\input{figures/backgrounds/latex_tables/wminusmunu13TeV.tex}
+\input{figures/backgrounds/latex_tables/wplusenu13TeV.tex}
+\input{figures/backgrounds/latex_tables/wminusenu13TeV.tex}
+
+\todo{The git repository contains a full plotbook in the subfolder of the figures. I think for documentation purposes this should be attached somehow.}

@@ -1,0 +1,59 @@
+%-------------------------------------------------------------------------------
+\chapter{Dependency of the multijet background on $\Delta m_W$}
+\label{a:mj_mW_dependency}
+%--------------------------------
+
+In general, fit results yield $\Delta m_W \neq 0$.
+The multijet estimation is consistently performed using the data-driven Ansatz
+%
+\begin{equation}
+    \mathrm{MJ} = \mathrm{Data} - \mathrm{EW}_{\mathrm{sim}},
+    \label{eq:mj_ansatz}
+\end{equation}
+%
+in which the electroweak (EW) signal simulation is generated under the assumption $\Delta m_W = 0$.
+This assumption is inconsistent with the data, which by construction reflects the true, non-zero value of $\Delta m_W$.
+Consequently, the resulting multijet template may retain residual $m_W$-dependent contributions, as the subtraction in Eq.~\ref{eq:mj_ansatz} relies on a signal simulation that does not incorporate the true mass value.
+
+To quantify the magnitude of this effect, the following study is performed:
+the multijet estimation is repeated using a signal template with $\Delta m_W$ shifted by $200\,\mathrm{MeV}$ relative to the nominal value.
+The resulting multijet distributions and subsequent fit results are compared to those obtained with the nominal ($\Delta m_W = 0$) template.
+This comparison provides a quantitative estimate of the sensitivity of the multijet background estimate to the mass hypothesis assumed in the subtraction procedure.
+The study is performed using the $W \to e\nu$ channels, which are selected due to their large multijet background fraction and correspondingly enhanced sensitivity to this potential bias.
+Figure~\ref{fig:mj_distributions} shows examples of comparisons between the obtained multijet distributions, normalised to their respective estimated yield.
+The grey uncertainty bands associated with the shape and yield uncertainty cover the differences between the two estimations, hence no significant bias is observed.
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/ptl_uT1_lEta1_cut8;1.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/ptl_uT4_lEta3_cut8;1.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/mT_uT1_lEta1_cut8;1.pdf}} 
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/mT_uT4_lEta3_cut8;1.pdf}}
+    \caption{Comparison of MJ estimations for different assumed valus of $\Delta m_W$.
+    The grey uncertainty band is calculated as the quadratic sum of the yield and shape uncertainty.
+    The uncertainties cover the differences of the distributions.}
+    \label{fig:mj_distributions}
+\end{figure}
+%
+To quantify this behaviour further the impact of the assumed value in the multijet estimation is quantised with a fit study.
+Figure~\ref{fig:mW_fits_mj} shows the fit results for $\Delta m_W$ for the two multijet estimations.
+The impact of the different assumed values for $\Delta m_W$ in the multijet estimation on the extracted value for $\Delta m_W$ is small.
+%
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/0_CH1Result_Nominal_ptl.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/0_CH5Result_Nominal_ptl.pdf}}
+    
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/200_CH1Result_Nominal_ptl.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\textwidth]{appendix/200_CH5Result_Nominal_ptl.pdf}}
+    \caption{Fit results for $\Delta m_W$ using \ptl distributions.
+    The upper row shows the result using a multijet estimation that assumes $\Delta m_W =0$, while the lower row corresponds to a multijet estimation using $\Delta m_W = 200 \, MeV$.
+    The left column shows results for the $5\,TeV$ electron channel, the right column for the $13\, TeV$ electron channel.
+    The impact of the assumed value for $\Delta m_W$ in the multijet estimation is less than $1\,MeV$ on the final result.}
+    \label{fig:mW_fits_mj}
+\end{figure}
+%
+This study supports the conclusion that the $m_W = 0$ assumption used in the nominal multijet estimation does not introduce a significant bias in the extracted $\Delta m_W$ value, assuming an initial shift of less than $200 \, MeV$.
+
+
